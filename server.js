@@ -42,7 +42,7 @@ app.get('/weather', (request, response) => {
   }
 });
 function Weather(weatherData,i) {
-    this.description = weatherData.data[i].weather.description;
+    this.forecast = weatherData.data[i].weather.description;
     this.time = weatherData.data[i].valid_date;
   }
 app.use('*', notFoundHandler);
