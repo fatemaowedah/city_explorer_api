@@ -41,10 +41,13 @@ app.get('/weather', (request, response) => {
     errorHandler(error, request, response);
   }
 });
-function Weather(weatherData,i) {
-    this.forecast = weatherData.data[i].weather.description;
-    this.time = weatherData.data[i].valid_date.toString().slice(0, 15);
+function Weather(weatherData, i) {
+  this.forecast = weatherData.data[i].weather.description;
+  this.time = convertTime();
+  function convertTime() {
+    return new Date(weatherData.data[i].valid_date).toString().split(' ').slice(0, 4).join(' ');
   }
+}
 app.use('*', notFoundHandler);
 function notFoundHandler(request, response) {
   response.status(500).send('Sorry, something went wrong');
