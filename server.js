@@ -42,8 +42,8 @@ app.get('/weather', (request, response) => {
   }
 });
 function Weather(weatherData,i) {
-    this.description = weatherData.data[i].weather.description;
-    this.time = weatherData.data[i].valid_date;
+    this.forecast = weatherData.data[i].weather.description;
+    this.time = weatherData.data[i].valid_date.toString().slice(0, 15);
   }
 app.use('*', notFoundHandler);
 function notFoundHandler(request, response) {
